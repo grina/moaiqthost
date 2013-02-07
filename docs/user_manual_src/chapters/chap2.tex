@@ -1,0 +1,76 @@
+\chapter{Setting up Moai Qt Host}
+\label{chap:setupshort}
+
+To set up Moai Qt Host you have two options. You can
+\begin{enumerate}[(a)]
+\item Dowload Moai Qt Host binary and use it as is, or
+\item Compile Moai SDK and the Moai Qt Host yourself. 
+\end{enumerate}
+
+\section{Option A: Download binary}
+
+This is the simplest way to go. Download Moai Qt Host binary. You must have the necessary Qt libraries on your computer (see ~\ref{sec:gen}).
+The binaries are located at \textit{''moaiqthost/bin/''} -folder.
+
+\section{Option B: Compile Moai Qt Host yourself}
+\label{sec:buildhost}
+
+This section describes how to do the debug build of Moai Qt Host. 
+The release build is built similarly. 
+Just make sure you build both the Moai SDK and the Moai Qt Host with same settings.
+
+\begin{enumerate}
+\item Set up Qt: the build has been tested with the open source version of Qt SDK 1.2.1 (libraries version 4.8.1, Qt Creator version 2.4.1), downloadable from \url{http://qt-project.org/}. On Windows and OS X you must use the 32-bit version of Qt libraries (on OS X you need to build these yourself). The Linux build has only been tested with 64-bit libraries.
+
+\item Download Moai Qt Host source.
+
+\item Download the Moai SDK. The supported version is 1.3 (Build 160). The source can be found from:
+	\begin{enumerate}
+	\item \textbf{On Windows and OS X}: \url{https://github.com/moai/moai-dev}
+	\item \textbf{On Linux}: \url{https://github.com/spacepluk/moai-dev} (the supported version is dated at January 22nd 2013)
+	\end{enumerate}
+	
+\item Place the Moai SDK source to \textit{''moaiqthost/src/moaipackage''} folder.
+
+\item Compile Moai SDK. Note that Moai SDK and the host must have the same compile configuration (for more information, refer to section~\ref{sec:compile_config}).
+	\begin{enumerate}
+	\item \textbf{On Windows}: build with Microsoft Visual Studio 2010, according to instructions in \textit{''moaiqthost/src/moaipackage/vs2010/README.txt''}.
+	\item \textbf{On OS X}: build with Xcode or Clang, according to instructions in\\ \textit{'''moaiqthost/src/moaipackage/xcode/README''}.
+	\item \textbf{On Linux}: build according to instructions in\\ \textit{''moaiqthost/src/moaipackage/README.md''}.
+	\end{enumerate}
+	
+\item Copy the compiled Moai SDK libraries to \textit{''moaiqthost/src/moaiqthost/libs''} -folder. You can find the libraries from:
+	\begin{enumerate}
+	\item \textbf{On Windows}: \textit{''moaiqthost/src/moaipackage/vs2010/bin/Win32/Debug'}'
+	\item \textbf{On OS X}: \textit{''/Users/<username>/Library/Developer/Xcode/DerivedData\\/libmoai-<random text>/Build/Products/Debug''}
+	\item \textbf{On Linux}: inside the subfolders of  \textit{''moaiqthost/src/moaipackage/build/src/''} and \textit{''moaiqthost/src/moaipackage/build/3rdparty/''} -- folders.
+	\end{enumerate}
+	
+\item Open the Moai Qt Host --project from \textit{''moaiqthost/src/moaiqthost/moaiqthost.pro''}.
+
+\item Configure the Moai Qt Host build if needed (refer to chapter~\ref{chap:using}).
+
+\item In Qt Creator under ''Projects'', make sure you are using the same compiler that you built Moai SDK with:
+	\begin{enumerate}
+	\item \textbf{On Windows}: MSVC2010
+	\item \textbf{On OS X}: GCC 4.2
+	\item \textbf{On Linux}: GCC 4.6.3
+	\end{enumerate}
+	
+\item Build. The resulting executable file is named ''moaiqt'', and will appear in:
+	\begin{enumerate}
+	\item \textbf{On Windows and OS X}: \textit{''moaiqthost/src/moaiqthost/Debug''} -- folder
+	\item \textbf{On Linux}: \textit{''moaiqthost/src/moaiqthost/''} -- folder
+	\end{enumerate}
+\end{enumerate}
+
+\section{About audio}
+\label{sec:aboutaudio}
+
+Moai offers two options for implementing audio. 
+Zipline recommends using the open source UNTZ audio library. 
+
+The second option is to use FMOD audio library, which is not free for commercial development.
+Enabling either option in Moai Qt Host is described in chapter~\ref{chap:using}. FMOD Ex is the current FMOD version.
+
+Note: Fmod requires runtime libraries. These are fmodex.dll on Windows  and libfmodex.dylib on OS X.

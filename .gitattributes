@@ -1,0 +1,22 @@
+# Default
+* text=auto
+
+# Text files: LF in repository, locally native line end
+*.cpp text
+*.h text
+*.cc text
+*.hh text
+*.pro text
+*.tex text
+*.txt text
+*.bib text
+*.clo text
+*.cls text
+
+# Always CRLF
+*.bat text eol=crlf
+
+# Binaries
+*.png binary
+*.jpg binary
+*.pdf binary

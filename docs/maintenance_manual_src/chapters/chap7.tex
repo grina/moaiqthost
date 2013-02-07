@@ -1,0 +1,71 @@
+\chapter{Maintenance instructions}
+
+\section{Maintenance guidelines}
+
+In principle new features are supposed to be added only if Moai SDK needs support for new features. Only feature that may be recommended to extend is different keyboard input support because currently all keyboard buttons are not supported. 
+
+\section{Adding a new component}
+
+New components should be added only when it simplifies the structure of Moai Qt Host.
+
+\section{Programs}
+
+Currently there is no reason to add new modules to Moai Qt Host. New functions may be added if they are needed for supporting new functionality on Moai SDK.
+
+\section{Compilation and installation}
+
+Moai Qt Host should be compiled with Qt Creator. 
+Compilation from command line has not been tested.
+
+\section{Configuration files and log files}
+
+Configuration of Moai Qt Host is done with qmake configurations in the Qt-project file. For more information check the User Manual.
+
+New configuration parameters should only be added if Moai SDK configurations change. Each configuration should include all the required modifications, such as required libraries and preprocessor macros. Different operating systems should also be noted.
+
+When naming configurations, the name should reflect the corresponding Moai SDK configuration. Only small letters and underscore should be used in configuration names.
+
+\section{Database}
+
+There is no database.
+
+\section{Connections}
+
+\subsection{Software connections}
+
+Moai Qt Host interacts with Moai SDK and Qt.
+On Linux, there are additional dependencies, which are listed in the build instructions of Moai SDK.
+
+\subsection{Hardware connections}
+
+All hardware interaction is handled by Qt.
+
+\subsection{Network connections}
+
+Currently there are no network connections.
+
+\subsection{Other connections}
+
+Curently there are no other connections.
+
+\section{Portability}
+
+\subsection{Software environment}
+
+Moai Qt Host should be portable to new operating systems if Qt libraries and Moai SDK are available.
+
+\subsection{Hardware environment}
+
+Portability to new hardware environments depends on Qt because it handles all the hardware interaction. 
+
+\section{Localization}
+
+No localization is available.
+
+\section{Testing}
+
+It's recommed to use Moai SDK samples for testing. If Moai Qt Host is modified all supported platforms (Windows, Linux, OS X) should be tested.
+
+\section{Error situations}
+
+Currently there are no known error situations.

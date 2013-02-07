@@ -1,0 +1,87 @@
+\chapter{Introduction}
+\label{chap:quick}
+
+\section{Purpose and coverage}
+
+The purpose of this document is to serve as a maintenance guide for Moai Qt Host application.
+
+The target audience of this document is anyone who is interested in developing, modifying or using Moai Qt Host.
+
+\section{Product and environment}
+
+The product Moai Qt Host is a host application for Moai SDK. 
+The primary task of the application is to offer the OpenGL drawing surface and relay user input to the Moai engine. 
+Game developers using Moai are the primary users of Moai Qt Host.
+
+Moai Qt Host is designed for desktop environments including Windows, OS X and Linux. It is designed for development and release of games, essentially replacing the GLUT host by offering better performance.
+
+\section{Definitions, terms and abbreviations}
+
+The definitions, terms and abbreviations are listed in table ~\ref{deftable}. 
+
+\begin{table}[h!]
+\begin{center}
+\caption{Terms and abbreviations}
+\label{deftable}
+	\begin{tabular}{|l|p{0.75\textwidth}|}
+	\hline
+	Term & Explanation \\ 
+	\hline \hline
+	AKU & Moai SDK API for host application. \\
+	\hline
+	Application & In this document application refers to Moai Qt Host application. \\
+        \hline
+	C++ & Programming language.\\
+	\hline
+	FMOD & Platform independent audio system.\\
+	\hline
+        GLUT host & An OpenGL demo Moai host that runs on Windows, OSX and Linux. It's not supposed to be used for development. \\
+        \hline
+	Host & In this document a host is an interface application between a device and the Moai game engine.\\
+	\hline
+	Lua & A scripting language\\
+	\hline
+	Moai / Moai SDK & 2D game development environment\\
+	\hline
+	OpenGL & Open Graphics Library is a platform independent graphics library. \\
+	\hline
+	Qt & Platform independent software anf graphical user interface development environment.\\
+	\hline
+	Terminal & Textual command interface.\\
+	\hline
+        UNTZ & Open source audio library.\\
+	\hline
+	\end{tabular}
+\end{center}
+\end{table}
+
+\section{References}
+
+\begin{enumerate}
+\item\label{itm:qtlicense} Qt Licensing. [accessed on 15.10.2012]. Available at:
+  \url{http://qt.digia.com/Product/Licensing/}
+\item\label{itm:mpl} Mozilla Public License version 2.0. [accessed on 04.02.2013]. Available at:
+  \url{http://www.mozilla.org/MPL/2.0/}
+\end{enumerate}
+
+\section {Document overview}
+
+Chapter two contains application overview.
+
+Chapter three contains information on application environment.
+
+Chapter four contains information on maintenance staff and maintenance tools.
+
+Chapter five contains an overview or the implementation of Moai Qt Host.
+
+Chapter six contains information on files and components.
+
+Chapter seven contains maintenance instructions.
+
+Chapter eight contains infromation on reporting and documents.
+
+Chapter nine contains information on known problems, curiosities and illogicalities.
+
+Chapter ten contains abandoned alternative solutions.
+
+Chapter ten contains thoughts on further development.

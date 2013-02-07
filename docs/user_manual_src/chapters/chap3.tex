@@ -1,0 +1,62 @@
+\chapter{Using and configuring Moai Qt Host}
+\label{chap:using}
+
+\section{General}
+\label{sec:gen}
+
+In general, just give your Lua scripts for the host as command line arguments. 
+
+Moai Qt Host requires Qt libraries in order to work, so you must make sure that they are available.
+To do this you can, for example, include the libraries in the same folder as the Moai Qt Host executable, or add the libraries path to environment variables.
+
+
+
+\section{Compile Configurations}
+\label{sec:compile_config}
+
+Moai Qt Host can be configured for different purposes by qmake configurations.
+Different parameters are explained in table~\ref{config_params} on page~\pageref{config_params}.
+The ''Dependency libraries''-column refers to the libraries that should be copied to ''libs''-folder (refer to section~\ref{sec:buildhost} step 6) when using corresponding configuration.
+
+Enabling each parameter is done by adding them to the \texttt{CONFIG}-variable in \textit{moai\_root.pro}-project file.
+For Windows default configuration, which has the \texttt{luaext} and \texttt{particle\_presets} --parameters enabled, this would look like following: 
+\begin{quote}
+\texttt{CONFIG += luaext particle\_presets}
+\end{quote}
+
+\pagebreak % To put OSX & Linux configs on one page.
+Default configuration for OS X and Linux are:
+\begin{quote}
+OS X:  \texttt{CONFIG += luaext particle\_presets untz}\\
+Linux: \texttt{CONFIG += untz}
+\end{quote}
+
+To get the required libraries and to ensure compatibility, the Moai SDK should be built with same kind of configuration as the Moai Qt Host. 
+So, for example, if you want to use FMOD Ex --sound system, you should build the Moai SDK with FMOD Ex configuration and use the libraries from that build, in addition to setting the \texttt{"fmod\_ex"}-parameter for Moai Qt Host build.
+
+\begin{table}[h!]
+\begin{center}
+\caption{Configuration parameters for Moai Qt Host}
+\label{config_params}
+\begin{tabular}{|l|p{0.35\textwidth}|p{0.35\textwidth}|}
+\hline
+Parameter & Description & Dependency libraries\\ 
+\hline
+\hline
+audiosampler & Enables the MOAIAudioSampler-extension. Not fully functional at the time of writing this document. & ---\\
+\hline
+debugger & Enable the Moai SDK harness for external debuggers. Using 3rd party debuggers (such as ZeroBrane Studio) with Moai Qt Host has not been tested and might not work. & \texttt{moaiext-debugger}\\
+\hline
+fmod\_designer & Use FMOD Designer as the sound system (Not tested). & From Moai SDK: \texttt{moaiext-fmod-designer}\newline From FMOD: \texttt{fmodex\_vc}\\
+\hline
+fmod\_ex & Use FMOD Ex as the sound system (Not tested on Linux). & \textbf{Windows \& Linux}: \newline From Moai SDK: \texttt{moaiext-fmod-ex}\newline From FMOD: \texttt{fmodex\_vc} \newline \textbf{OS X}: \newline From Moai SDK: \texttt{moai-osx-fmod-ex} \newline From FMOD: \texttt{libfmodex}\\
+\hline
+luaext & Enable the Lua-extensions for Moai SDK. & \textbf{Windows \& Linux}: \texttt{moaiext-luaext} \newline \textbf{OS X}: \texttt{moai-osx-luaext}\\
+\hline
+particle\_presets & Use custom handler (\texttt{ParticlePresets}-C++-files) for particle systems. & ---\\
+\hline
+untz & Use UNTZ as the sound system. & \textbf{Windows}: \texttt{moaiext-untz} \newline \textbf{OS X}: \texttt{moai-osx-untz} \newline \textbf{Linux}: \texttt{moaiext-untz} and \texttt{untz}\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}

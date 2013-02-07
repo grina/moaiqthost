@@ -1,0 +1,41 @@
+\chapter{Thoughts on further development}
+
+\section{''Open file'' --dialog}
+
+If no scripts are given as parameters when starting Moai Qt Host, the files could be inquired from the user via a dialog.
+Providing this feature would require changes to the script-module. The actual dialog could be easily implemented with Qt.
+
+\section{Mobile OS support}
+
+Qt supports several mobile operating systems, like Symbian and MeeGo. 
+Support for Android and iOS environments is being planned.
+Thus, using Qt-libraries on these platforms to provide required functionality for Moai Qt Host should be possible.
+
+The host-part of Moai Qt Host should be portable to mobile devices with relatively small changes. 
+Larger problem is the Moai SDK itself, which must be compiled for target operating systems. 
+Perhaps the easiest way to do this would be to compile the Moai SDK with Qt Creator (refer to section~\ref{qtproject}).
+
+\section{Separating input handling from the window-module}
+
+Mobile operating systems might require some changes to the way the input is currently handled.
+Required changes could be done within the current window-module, but this might cause some unnecessary features to be included in desktop and mobile environments.
+
+Another way would be to use different input modules for desktop and mobile environments.
+This would require separating the input handling from the current window-module.
+One way to implement this would be to create a transparent widget over the main window, and have that widget act as the input module.
+
+\section{Sensor support for mobile systems}
+
+If support for mobile operating systems is provided, it would also be preferable that all the related sensors (compass, location, etc.) are supported as well.
+This would require changes to the window-module of Moai Qt Host, but the changes themselves should be quite simple.
+Sensors supported by Moai SDK can be found by examining the AKU-interface.
+
+\section{Dynamic script reloading}
+
+GLUT-host gives user the ability to reload .lua-files when they are modified during runtime.
+This is a very useful feature when using the host when developing your game.
+
+Ideally this same functionality would be implemented to Moai Qt Host by using Qt. This would keep the implementation same for all platforms. 
+The script-module needs to be modified, but there should be no need to touch the other modules. 
+If a timer is required, we can just make a new one inside the script-module, instead of using the one in window-module.
+Enabling script reloading could be done the same way as it is done in GLUT-host, which is with an e-flag in parameters when starting the host.

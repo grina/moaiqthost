@@ -1,0 +1,14 @@
+\chapter{Abandoned alternative solutions}
+
+\section{Moai SDK Qt-project}
+\label{qtproject}
+
+The first approach taken for building Moai Qt Host was to build the whole Moai SDK with Qt Creator by creating a Qt-project for it.
+This was abandoned because creating the project proved to be difficult and time consuming, partly because of multiple 3rd party libraries involved.
+Also, even a working Qt-project would be a problem in maintenance sense since it would need to be updated every time the Moai SDK file structure changes.
+
+\section{Update and rendering on different timers}
+
+Initially during development the Moai Qt Host used separate timers (QTimer-class) for the update and render functions.
+This caused the game to sometimes update multiple times without rendering, or vice-versa.
+This resulted in an uneven framerate, so it was concluded that using one timer for both the update and render function would be safer.
